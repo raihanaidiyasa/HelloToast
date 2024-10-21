@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         model.currentName.observe(this, nameObserver)
 
+        mCount = model.currentName.value?:0
         buttonCountUp.setOnClickListener(View.OnClickListener {
             mCount = mCount + 1
             if (mShowCount != null)
