@@ -34,12 +34,11 @@ class MainActivity : AppCompatActivity() {
 
         model.currentName.observe(this, nameObserver)
 
-        mCount = model.currentName.value?:0
-        buttonCountUp.setOnClickListener(View.OnClickListener {
-            mCount = mCount + 1
-            if (mShowCount != null)
-                model.currentName.setValue(mCount)
-        })
+        buttonCountUp.setOnClickListener {
+            // Tambahkan 1 dan perbarui ViewModel
+            mCount = (model.currentName.value ?: 0) + 1
+            model.currentName.value = mCount
+        }
 
         buttonToast.setOnClickListener(View.OnClickListener {
             val tulisan: String = mShowCount?.text.toString()
